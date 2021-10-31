@@ -1,0 +1,15 @@
+{
+  "typeAcquisition": {
+    "enable": true,
+    "include": ["react", "react-dom"]
+  },
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": false,
+    "target": "ES2018",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "outDir": "dist"
+  }
+}

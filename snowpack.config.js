@@ -4,7 +4,10 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
-    src: "/"
+    src: {
+      url: "/",
+      dot: true
+    }
   },
   optimize: {
     minify: true

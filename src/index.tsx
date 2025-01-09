@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import ConvertForm from './ConvertForm.js'
 
@@ -20,4 +20,5 @@ function App() {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root-container'))
+const root = createRoot(document.getElementById('root-container')!)
+root.render(<App />)

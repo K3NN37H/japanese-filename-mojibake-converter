@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import cptable from 'codepage'
+import layouts from './layout.module.css'
 
 export default function ConvertForm() {
   const [inputText, setInputText] = useState('')
@@ -16,7 +17,9 @@ export default function ConvertForm() {
       const encoded = cptable.utils.encode(inputEncoding, normalized)
       setConvertedText(cptable.utils.decode(932, encoded))
     } catch (e) {
-      inputArea?.current?.setCustomValidity('The input text couldn\'t be converted. The text might not be Windows mojibake.')
+      inputArea?.current?.setCustomValidity(
+        "The input text couldn't be converted. The text might not be Windows mojibake."
+      )
     }
 
     inputArea?.current?.reportValidity()
@@ -24,11 +27,12 @@ export default function ConvertForm() {
 
   return (
     <>
-      <form onSubmit={convertText}>
-        <label htmlFor='input'>Input</label>
-        <textarea ref={inputArea} id='input' rows={15} cols={100} value={inputText} onChange={(e) => setInputText(e.target.value)} />
-        <br />
-        <input type='submit' />
+      <form onSubmit={convertText} className={layouts.formGrid}>
+        <div>
+          <label htmlFor='input'>Input</label>
+          <textarea ref={inputArea} id='input' rows={15} cols={100} value={inputText} onChange={(e) => setInputText(e.target.value)} />
+          <input type='submit' />
+        </div>
         <details style={{ display: 'none' }}>
           <summary>Advanced settings</summary>
           <select value={inputEncoding} onChange={(e) => setInputEncoding(parseInt(e.target.value, 10))}>
@@ -36,10 +40,12 @@ export default function ConvertForm() {
             <option value={65001}>UTF-8</option>
           </select>
         </details>
-        <label htmlFor='result'>Result</label>
-        <output>
-          <textarea id='result' rows={15} cols={100} value={convertedText} readOnly />
-        </output>
+        <div>
+          <label htmlFor='result'>Result</label>
+          <output>
+            <textarea id='result' rows={15} cols={100} value={convertedText} readOnly />
+          </output>
+        </div>
       </form>
     </>
   )

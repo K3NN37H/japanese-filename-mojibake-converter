@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import cptable from 'codepage'
 import layouts from './layout.module.css'
+import * as iconv from 'iconv-lite'
 
 export default function ConvertForm() {
   const [inputText, setInputText] = useState('')
@@ -14,8 +14,8 @@ export default function ConvertForm() {
     try {
       inputArea?.current?.setCustomValidity('')
       const normalized = inputText.normalize('NFC')
-      const encoded = cptable.utils.encode(inputEncoding, normalized)
-      const encodedArray = new Uint8Array(encoded as Array<number>)
+      const encoded = iconv.encode(normalized, '437')
+      const encodedArray = new Uint8Array(encoded)
       const decoder = new TextDecoder('Windows-31J')
       setConvertedText(decoder.decode(encodedArray))
     } catch (e) {

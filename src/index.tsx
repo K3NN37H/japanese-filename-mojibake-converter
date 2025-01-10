@@ -14,6 +14,12 @@ function App() {
         <p>The <cite><a href='https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT'>ZIP specification</a></cite> doesn't have a standardized way to specify the encoding used for the filenames. It only contains a flag to mark if it's in UTF-8 or not.</p>
         <p>If UTF-8 is not specified, it generally seems to recommend treating it as <a href='https://en.wikipedia.org/wiki/Code_page_437'>IBM code page 437</a> encoding, as per the originally specified ZIP character encoding back in 1989.</p>
         <p>Windows (either following this recommendation or using the currently set locale, unknown which) interprets the filenames as code page 437 encoded when unzipping. Since the encoding was actually Shift-JIS, using code page 437 causes the names to come out as garbled mojibake.</p>
+        <p>Other useful resources:</p>
+        <ul>
+          <li><a href='https://encoding.spec.whatwg.org/#names-and-labels'>https://encoding.spec.whatwg.org/#names-and-labels</a></li>
+          <li><a href='https://en.wikipedia.org/wiki/Windows-1252'>https://en.wikipedia.org/wiki/Windows-1252</a></li>
+          <li><a href='https://en.wikipedia.org/wiki/ISO/IEC_8859-1'>https://en.wikipedia.org/wiki/ISO/IEC_8859-1</a></li>
+        </ul>
       </details>
       <ConvertForm />
     </>
